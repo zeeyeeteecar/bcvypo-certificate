@@ -23,7 +23,7 @@ export default async function createPdf() {
 
   const content = "Some content!55";
 
-  fs.writeFile("src/app/test.pdf", pdfBytes, (err) => {
+  fs.writeFile("public/test.pdf", pdfBytes, (err) => {
     if (err) {
       console.error(err);
     } else {

@@ -19,6 +19,14 @@ export default async function createPdf() {
     color: rgb(0, 0.53, 0.71),
   });
 
+  page.drawText(Date.now().toString(), {
+    x: 50,
+    y: height - 8 * fontSize,
+    size: fontSize,
+    font: timesRomanFont,
+    color: rgb(0, 0.53, 0.71),
+  });
+
   const pdfBytes = await pdfDoc.save();
 
   const content = "Some content!55";
@@ -40,5 +48,10 @@ export default async function createPdf() {
 
   // doc.save("src/app/ta4.pdf");
 
-  return <>{JSON.stringify(pdfBytes)}</>;
+  return (
+    <>
+      <div>{Date.now().toString()}</div>
+      <div>{JSON.stringify(pdfBytes)}</div>
+    </>
+  );
 }

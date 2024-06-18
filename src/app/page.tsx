@@ -3,8 +3,11 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import download from "downloadjs";
 import fs from "fs";
 import { jsPDF } from "jspdf";
+import moment from "moment";
 
 export default async function createPdf() {
+  const currentTime = moment().format("HH:mm:ss");
+
   const pdfDoc = await PDFDocument.create();
   const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
 
@@ -19,7 +22,7 @@ export default async function createPdf() {
     color: rgb(0, 0.53, 0.71),
   });
 
-  page.drawText(Date.now().toString(), {
+  page.drawText(currentTime, {
     x: 50,
     y: height - 8 * fontSize,
     size: fontSize,
@@ -50,7 +53,7 @@ export default async function createPdf() {
 
   return (
     <>
-      <div>{Date.now().toString()}</div>
+      <div>{currentTime}</div>
       <div>{JSON.stringify(pdfBytes)}</div>
     </>
   );

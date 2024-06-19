@@ -4,16 +4,10 @@ import download from "downloadjs";
 import fs from "fs";
 import { jsPDF } from "jspdf";
 import moment from "moment-timezone";
+import CurrentTime from "./components/CurrentTime";
 
 export default async function createPdf() {
   //const currentTime = moment(new Date()).tz('America/Vancouver').format("HH:mm:ss");
-  const today = new Date();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-  const date = today.getDate();
-  const currentDate = month + "/" + date + "/" + year;
-  const currentTime =
-    today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
 
   const pdfDoc = await PDFDocument.create();
   const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
@@ -29,7 +23,7 @@ export default async function createPdf() {
     color: rgb(0, 0.53, 0.71),
   });
 
-  page.drawText(currentTime, {
+  page.drawText(CurrentTime.toString(), {
     x: 50,
     y: height - 8 * fontSize,
     size: fontSize,
@@ -60,7 +54,7 @@ export default async function createPdf() {
 
   return (
     <>
-      <div>{currentTime}</div>
+      <div><CurrentTime /></div>
       <div>{JSON.stringify(pdfBytes)}</div>
     </>
   );

@@ -6,7 +6,7 @@ import { jsPDF } from "jspdf";
 import moment from "moment-timezone";
 
 export default async function createPdf() {
-  const currentTime = moment().utcOffset(0).format("HH:mm:ss");
+  const currentTime = moment().tz('America/Vancouver').format("HH:mm:ss");
 
   const pdfDoc = await PDFDocument.create();
   const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);

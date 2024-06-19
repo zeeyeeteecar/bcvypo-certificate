@@ -3,10 +3,10 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import download from "downloadjs";
 import fs from "fs";
 import { jsPDF } from "jspdf";
-import moment from "moment";
+import moment from "moment-timezone";
 
 export default async function createPdf() {
-  const currentTime = moment().format("HH:mm:ss");
+  const currentTime = moment().utcOffset(0).format("HH:mm:ss");
 
   const pdfDoc = await PDFDocument.create();
   const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);

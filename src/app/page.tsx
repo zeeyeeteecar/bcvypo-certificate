@@ -14,7 +14,7 @@ export default async function createPdf() {
 
   const page = pdfDoc.addPage();
   const { width, height } = page.getSize();
-  const fontSize = 30;
+  const fontSize = 10;
   page.drawText("Creating PDFs in JavaScript is awesome1234!", {
     x: 50,
     y: height - 4 * fontSize,

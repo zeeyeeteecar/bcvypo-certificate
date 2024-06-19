@@ -9,7 +9,7 @@ export default async function page() {
   const host = headersList.get("X-Forwarded-Host");
   const proto = headersList.get("X-Forwarded-Proto");
 
-  const url = "http://" + host +"/formFillPDF.pdf";
+  const url = "http://" + host + "/formFillPDF.pdf";
   //const url = 'https://pdf-lib.js.org/assets/with_update_sections.pdf'
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
@@ -58,5 +58,10 @@ export default async function page() {
 
   const files = fs.readdirSync(path.join("public/"));
 
-  return <div>{JSON.stringify(files)}</div>;
+  return (
+    <>
+    <div>{url}</div>
+      <div>{JSON.stringify(files)}</div>
+    </>
+  );
 }

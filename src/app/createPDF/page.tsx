@@ -1,6 +1,6 @@
 import React from "react";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
-import download from "downloadjs";
+
 import fs from "fs";
 import { jsPDF } from "jspdf";
 import moment from "moment-timezone";

@@ -10,7 +10,7 @@ export default async function page() {
   const proto = headersList.get("X-Forwarded-Proto");
 
   const url = "http://" + host + "/formFillPDF.pdf";
-//   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
+  //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(existingPdfBytes);
@@ -22,13 +22,11 @@ export default async function page() {
   nameField.setText(
     [
       `Mario is a fictional character in the Mario video game franchise, `,
-      `owned by Nintendo and created by Japanese video game designer Shigeru `,
       `Miyamoto. Serving as the company's mascot and the eponymous `,
-      `protagonist of the series, Mario has appeared in over 200 video games `,
-      `since his creation. Depicted as a short, pudgy, Italian plumber who `,
-      `resides in the Mushroom Kingdom, his adventures generally center `,
-      `upon rescuing Princess Peach from the Koopa villain Bowser. His `,
-      `younger brother and sidekick is Luigi.`,
+      `Miyamoto. Serving as the company's mascot and the eponymous `,
+      `Miyamoto. Serving as the company's mascot and the eponymous `,
+      `Miyamoto. Serving as the company's mascot and the eponymous `,
+      `Miyamoto. Serving as the company's mascot and the eponymous `,
     ].join("\n")
   );
 

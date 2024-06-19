@@ -2,9 +2,14 @@ import React from "react";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import fs from "fs";
 import path from "path";
+import { headers } from "next/headers";
 
 export default async function page() {
-  const url = "/formFillPDF.pdf";
+  const headersList = headers();
+  const host = headersList.get("X-Forwarded-Host");
+  const proto = headersList.get("X-Forwarded-Proto");
+
+  const url = "http://" + host +"/formFillPDF.pdf";
   //const url = 'https://pdf-lib.js.org/assets/with_update_sections.pdf'
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 

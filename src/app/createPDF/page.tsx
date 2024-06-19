@@ -1,5 +1,6 @@
 import React from "react";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import { headers } from 'next/headers'
 
 import fs from "fs";
 import { jsPDF } from "jspdf";
@@ -52,12 +53,17 @@ export default async function createPdf() {
 
   // doc.save("src/app/ta4.pdf");
 
+const headersList = headers();
+const host = headersList.get('X-Forwarded-Host');
+const proto = headersList.get('X-Forwarded-Proto');
+
   return (
     <>
+      <div>{}</div>
       <div>
         <CurrentTime />
       </div>
-      <div>{JSON.stringify(pdfBytes)}</div>
+      <div>{JSON.stringify(host)}</div>
     </>
   );
 }

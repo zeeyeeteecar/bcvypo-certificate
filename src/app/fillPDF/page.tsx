@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 
 export default async function page() {
-  const url = "http://localhost:3000/formFillPDF.pdf";
+  const url = "/formFillPDF.pdf";
   //const url = 'https://pdf-lib.js.org/assets/with_update_sections.pdf'
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 

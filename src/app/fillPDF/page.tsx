@@ -9,7 +9,8 @@ export default async function page() {
   const host = headersList.get("X-Forwarded-Host");
   const proto = headersList.get("X-Forwarded-Proto");
 
-  const url = "http://" + host + "/formFillPDF.pdf";
+  const url =
+    "http://" + host + "/bcvypo_certificate_2023-2024_form_sample.pdf";
   //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
@@ -46,7 +47,7 @@ export default async function page() {
 
   const pdfBytes = await pdfDoc.save();
 
-  fs.writeFile("public/filledPDF.pdf", pdfBytes, (err) => {
+  fs.writeFile("public/fillPDF/filledPDF.pdf", pdfBytes, (err) => {
     if (err) {
       console.error(err);
     } else {

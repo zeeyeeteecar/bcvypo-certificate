@@ -9,6 +9,7 @@ export async function exportedCertList() {
   const path_certificateExport = path.resolve(
     process.cwd(),
     "src",
+    "tmp",
     "certificateExport"
   );
   const fileObjs = await fs.readdir(path_certificateExport);
@@ -33,6 +34,7 @@ export async function generateCert(_memberName: string) {
   const path_certificateExport = path.resolve(
     process.cwd(),
     "src",
+    "tmp",
     "certificateExport"
   );
 

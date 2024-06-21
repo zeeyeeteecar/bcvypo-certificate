@@ -21,14 +21,7 @@ export default async function page() {
 
   const nameField = form.getTextField("Text1");
   nameField.setText(
-    [
-      `Mario is a fictional character in the Mario video game franchise, `,
-      `Miyamoto. Serving as the company's mascot and the eponymous `,
-      `Miyamoto. Serving as the company's mascot and the eponymous `,
-      `Miyamoto. Serving as the company's mascot and the eponymous `,
-      `Miyamoto. Serving as the company's mascot and the eponymous `,
-      `Miyamoto. Serving as the company's mascot and the eponymous `,
-    ].join("\n")
+    `Mario is a fictional character in the Mario video game franchise, `
   );
 
   form.flatten();

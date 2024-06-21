@@ -58,7 +58,7 @@ export default async function generateCert() {
   const pdfBytes = await pdfDoc.save();
 
   await fs.writeFile(
-    path_certificateExport + "/filledPDF" + "tomtangjob" + ".pdf",
+    path_certificateExport + "/filledPDF_" + "tomtangjob" + ".pdf",
     pdfBytes
   );
 

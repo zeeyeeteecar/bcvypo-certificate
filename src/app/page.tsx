@@ -14,8 +14,8 @@ export default async function generateCert() {
 
   const path_certificateExport = path.resolve(
     process.cwd(),
-    "src",
-    "certificateExport"
+    "public",
+    "certificateTemplate"
   );
 
   const url =
@@ -59,6 +59,7 @@ export default async function generateCert() {
 
   const path_PublicCertificateExport = path.resolve(
     process.cwd(),
+    "src",
     "tmp",
     "certificateExport"
   );
@@ -68,7 +69,9 @@ export default async function generateCert() {
     pdfBytes
   );
 
-  return(<>
-  <div>{JSON.stringify(pdfData)}</div>
-  </>)
+  return (
+    <>
+      <div>{JSON.stringify(pdfData)}</div>
+    </>
+  );
 }

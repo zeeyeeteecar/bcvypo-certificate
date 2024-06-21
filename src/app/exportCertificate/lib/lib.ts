@@ -1,22 +1,25 @@
 "use server";
-import fs from "fs";
+import { promises as fs } from "fs";
 import path from "path";
 import { headers } from "next/headers";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import Link from "next/link";
 
-
 export async function exportedCertList() {
+  const path_certificateExport = path.resolve(
+    process.cwd(),
+    "src",
+    "certificateExport"
+  );
+  const fileObjs = await fs.readdir(path_certificateExport);
+  //const fileObjs = fs.readdirSync(path.join("public/certificateExport"));
+  let fileList: string[] = [];
 
-  const fileObjs = fs.readdirSync(path.join("public/certificateExport"));
-  let fileList:string[] = [];
-
-  fileObjs.forEach(file => { 
-    fileList.push(file); 
-  }); 
+  fileObjs.forEach((file) => {
+    fileList.push(file);
+  });
 
   return fileList;
-
 }
 
 // export async function generateCert(_memberName: string) {

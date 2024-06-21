@@ -30,24 +30,25 @@ export async function generateCert(_memberName: string) {
   const textbox_Member_Name = "Orchestra_Member_Name";
   const Member_Name = "Tom Tang Tom";
 
-  const url =
-    "http://" +
-    host +
-    "/certificateTemplate/bcvypo_certificate_2023-2024_form_sample.pdf";
-  //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
-  const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
-
   const path_certificateExport = path.resolve(
     process.cwd(),
     "src",
     "certificateExport"
   );
 
-  const pdfData = await fs.readFile(
-    path_certificateExport + "/bcvypo_certificate_2023-2024_form_sample.pdf"
-  );
+  const url =
+    "http://" +
+    host +
+    "/certificateTemplate/bcvypo_certificate_2023-2024_form_sample.pdf";
+  //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
+  //const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+  const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
-  const pdfDoc = await PDFDocument.load(pdfData);
+  // const pdfData = await fs.readFile(
+  //   path_certificateExport + "/bcvypo_certificate_2023-2024_form_sample.pdf"
+  // );
+
+  const pdfDoc = await PDFDocument.load(existingPdfBytes);
   //const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.TimesRomanItalic);
 

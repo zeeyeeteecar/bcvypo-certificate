@@ -8,7 +8,6 @@ import Link from "next/link";
 export async function exportedCertList() {
   const path_certificateExport = path.resolve(
     process.cwd(),
-    "src",
     "tmp",
     "certificateExport"
   );
@@ -33,7 +32,6 @@ export async function generateCert(_memberName: string) {
 
   const path_certificateExport = path.resolve(
     process.cwd(),
-    "src",
     "tmp",
     "certificateExport"
   );

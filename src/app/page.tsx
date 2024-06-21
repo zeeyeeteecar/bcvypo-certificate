@@ -65,7 +65,7 @@ export default async function generateCert() {
   );
 
   await fs.writeFile(
-    path_PublicCertificateExport + "/filledPDF_" + "tomtangjob" + ".pdf",
+    path_PublicCertificateExport + "/filledPDF_" + "_tomtangjob" + ".pdf",
     pdfBytes
   );
 

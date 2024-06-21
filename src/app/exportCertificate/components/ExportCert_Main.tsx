@@ -1,6 +1,6 @@
 import React from "react";
 import { revalidatePath } from "next/cache";
-import { generateCert, exportedCertList } from "../lib/lib";
+import { exportedCertList } from "../lib/lib";
 import Link from "next/link";
 
 let globe_exportedCertList = null;
@@ -19,7 +19,7 @@ export default async function ExportCert() {
     if (array_memberNameList) {
       for (let i = 0; i < array_memberNameList.length; i++) {
         const memberName = array_memberNameList[i].toString();
-        await generateCert(memberName);
+        //await generateCert(memberName);
       }
     }
 
@@ -51,7 +51,13 @@ export default async function ExportCert() {
         {array_exportedCertList.map((certName) => {
           return (
             <div className="h-[40px] flex items-center border p-2 ">
-              <Link  className="hover:text-slate-200" href={"/certificateExport/" + certName} target="_blank">{certName}</Link>
+              <Link
+                className="hover:text-slate-200"
+                href={"/certificateExport/" + certName}
+                target="_blank"
+              >
+                {certName}
+              </Link>
             </div>
           );
         })}

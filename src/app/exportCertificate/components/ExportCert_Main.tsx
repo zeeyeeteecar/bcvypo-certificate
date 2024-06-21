@@ -1,11 +1,11 @@
 import React from "react";
 import { revalidatePath } from "next/cache";
 import { generateCert, exportedCertList } from "../lib/lib";
+import Link from "next/link";
 
 let globe_exportedCertList = null;
 
 export default async function ExportCert() {
-
   const array_exportedCertList = await exportedCertList();
 
   async function exportCert(data: FormData) {
@@ -26,7 +26,7 @@ export default async function ExportCert() {
     revalidatePath("/exportCertificate");
   }
 
-  console.log("typeof",typeof exportedCertList())
+  console.log("typeof", typeof exportedCertList());
 
   return (
     <main className="w-[1500px] h-[1000px] border p-2 space-x-2 flex flex-row">
@@ -48,9 +48,13 @@ export default async function ExportCert() {
         </form>
       </div>
       <div className="w-1/3 border h-ful">
-      {array_exportedCertList.map(certName=>{
-        return(<div>{certName}</div>)
-      })}
+        {array_exportedCertList.map((certName) => {
+          return (
+            <div className="h-[40px] flex items-center border p-2 ">
+              <Link  className="hover:text-slate-200" href={"/certificateExport/" + certName} target="_blank">{certName}</Link>
+            </div>
+          );
+        })}
       </div>
       <div className="w-1/3 border h-ful">{}</div>
     </main>

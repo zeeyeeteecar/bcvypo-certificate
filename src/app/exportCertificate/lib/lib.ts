@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import { headers } from "next/headers";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import Link from "next/link";
+
 
 export async function exportedCertList() {
 
@@ -32,7 +34,9 @@ export async function generateCert(_memberName: string) {
   //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
-  const pdfDoc = await PDFDocument.load(existingPdfBytes);
+const pdfData = await fs.readFileSync("public/certificateTemplate/bcvypo_certificate_2023-2024_form_sample.pdf");
+
+  const pdfDoc = await PDFDocument.load(pdfData);
   //const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.TimesRomanItalic);
 

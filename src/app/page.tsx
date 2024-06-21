@@ -59,7 +59,7 @@ export default async function generateCert() {
 
   const path_PublicCertificateExport = path.resolve(
     process.cwd(),
-    "public",
+    "tmp",
     "certificateExport"
   );
 

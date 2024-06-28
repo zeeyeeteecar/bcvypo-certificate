@@ -19,7 +19,7 @@ export default async function ExportCert() {
     if (array_memberNameList) {
       for (let i = 0; i < array_memberNameList.length; i++) {
         const memberName = array_memberNameList[i].toString();
-        // await generateCert(memberName);
+        await generateCert(memberName);
       }
     }
 

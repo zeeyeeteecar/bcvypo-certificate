@@ -76,7 +76,7 @@ export default async function createPdf() {
   revalidatePath("/listFiles");
 
   fs.writeFile(
-    "public/createPDF/test_" + CurrentTime + ".pdf",
+    "public/createPDF/test_" + currentTime + ".pdf",
     pdfBytes,
     (err) => {
       if (err) {
@@ -103,9 +103,7 @@ export default async function createPdf() {
   return (
     <>
       <div>{}</div>
-      <div>
-        <CurrentTime />
-      </div>
+      <div>currentTime:{currentTime}</div>
       <div>{JSON.stringify(host)}</div>
     </>
   );

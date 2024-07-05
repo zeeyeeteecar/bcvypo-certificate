@@ -3,15 +3,12 @@ import { promises as fs } from "fs";
 import path from "path";
 import { headers } from "next/headers";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
-import Link from "next/link";
+import { revalidatePath } from "next/cache";
+import { s3Client, uploadFileToS3 } from "@/lib/lib";
+
 
 export async function exportedCertList() {
-  const path_certificateExport = path.resolve(
-    process.cwd(),
-    "src",
-    "tmp",
-    "certificateExport"
-  );
+  const path_certificateExport = path.resolve(process.cwd(), "src", "tmp");
   const fileObjs = await fs.readdir(path_certificateExport);
   //const fileObjs = fs.readdirSync(path.join("public/certificateExport"));
   let fileList: string[] = [];
@@ -71,6 +68,11 @@ export async function generateCert(_memberName: string) {
   //   });
 
   const pdfBytes = await pdfDoc.save();
+
+  const buffer = Buffer.from(await pdfBytes);
+  await uploadFileToS3(await buffer, "certificate_" + _memberName + ".pdf");
+  revalidatePath("/listFiles");
+
 
   await fs.writeFile(
     path_certificateExport + "/filledPDF" + _memberName + ".pdf",

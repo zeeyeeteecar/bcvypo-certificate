@@ -50,6 +50,8 @@ export default async function page() {
 
   const files = fs.readdirSync(path.join("public/"));
 
+  
+
   return (
     <>
       <div>{host}</div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { revalidatePath } from "next/cache";
-import { exportedCertList } from "../lib/lib";
+import { exportedCertList, generateCert } from "../lib/lib";
 import Link from "next/link";
 
 let globe_exportedCertList = null;

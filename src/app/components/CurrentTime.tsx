@@ -9,5 +9,5 @@ export default function CurrentTime() {
   const currentTime =
     today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
 
-  return <div>{currentTime}</div>;
+  return currentTime;
 }

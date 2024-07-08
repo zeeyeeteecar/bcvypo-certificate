@@ -6,7 +6,6 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { revalidatePath } from "next/cache";
 import { s3Client, uploadFileToS3 } from "@/lib/lib";
 
-
 export async function exportedCertList() {
   const path_certificateExport = path.resolve(process.cwd(), "src", "tmp");
   const fileObjs = await fs.readdir(path_certificateExport);
@@ -31,18 +30,15 @@ export async function generateCert(_memberName: string) {
   const path_certificateExport = path.resolve(process.cwd(), "src", "tmp");
 
   const url =
-    "http://" +
-    host +
-    "/certificateTemplate/bcvypo_certificate_2023-2024_form_sample.pdf";
+    
+    "./src/tmp/certificateExport/bcvypo_certificate_2023-2024_form_sample.pdf";
   //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
-  //const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
-  const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+  //const pdfData = await fetch(url).then((res) => res.arrayBuffer());
+  //const pdfData = await fetch(url).then((res) => res.arrayBuffer());
 
-  // const pdfData = await fs.readFile(
-  //   path_certificateExport + "/bcvypo_certificate_2023-2024_form_sample.pdf"
-  // );
+  const pdfData = await fs.readFile(url);
 
-  const pdfDoc = await PDFDocument.load(existingPdfBytes);
+  const pdfDoc = await PDFDocument.load(pdfData);
   //const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const helveticaFont = await pdfDoc.embedFont(StandardFonts.TimesRomanItalic);
 
@@ -72,7 +68,6 @@ export async function generateCert(_memberName: string) {
   const buffer = Buffer.from(await pdfBytes);
   await uploadFileToS3(await buffer, "certificate_" + _memberName + ".pdf");
   revalidatePath("/listFiles");
-
 
   // await fs.writeFile(
   //   path_certificateExport + "/filledPDF" + _memberName + ".pdf",

@@ -29,12 +29,18 @@ export async function generateCert(_memberName: string) {
 
   const path_certificateExport = path.resolve(process.cwd(), "src", "tmp");
 
-  const url = "./bcvypo_certificate_2023-2024_form_sample.pdf";
+  const url =
+    "http://" + host + "/bcvypo_certificate_2023-2024_form_sample.pdf";
   //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
-  //const pdfData = await fetch(url).then((res) => res.arrayBuffer());
-  //const pdfData = await fetch(url).then((res) => res.arrayBuffer());
+  //const pdf = await fetch(url).then((res) => res.arrayBuffer());
 
-  const pdfData = await fs.readFile(url);
+  console.log(
+    "host==",
+    "http://" + host + "/bcvypo_certificate_2023-2024_form_sample.pdf"
+  );
+  const pdfData = await fs.readFile(
+    path_certificateExport + "/bcvypo_certificate_2023-2024_form_sample.pdf"
+  );
 
   const pdfDoc = await PDFDocument.load(pdfData);
   //const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);

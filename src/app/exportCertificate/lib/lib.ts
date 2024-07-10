@@ -29,9 +29,7 @@ export async function generateCert(_memberName: string) {
 
   const path_certificateExport = path.resolve(process.cwd(), "src", "tmp");
 
-  const url =
-    
-    "./src/tmp/certificateExport/bcvypo_certificate_2023-2024_form_sample.pdf";
+  const url = "./bcvypo_certificate_2023-2024_form_sample.pdf";
   //   const url = "https://pdf-lib.js.org/assets/with_update_sections.pdf";
   //const pdfData = await fetch(url).then((res) => res.arrayBuffer());
   //const pdfData = await fetch(url).then((res) => res.arrayBuffer());

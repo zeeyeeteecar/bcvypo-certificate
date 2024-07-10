@@ -1,12 +1,13 @@
 import React from "react";
 import { revalidatePath } from "next/cache";
 import { exportedCertList, generateCert } from "../lib/lib";
+import {ListObject} from "@/lib/lib"
 import Link from "next/link";
 
 let globe_exportedCertList = null;
 
 export default async function ExportCert() {
-  const array_exportedCertList = await exportedCertList();
+  const array_exportedCertList = await ListObject();
 
   async function exportCert(data: FormData) {
     "use server";
@@ -48,16 +49,17 @@ export default async function ExportCert() {
         </form>
       </div>
       <div className="w-1/3 border h-ful">
-        {array_exportedCertList.map((certName) => {
+        {array_exportedCertList && array_exportedCertList.map((certName:any) => {
           return (
             <div className="h-[40px] flex items-center border p-2 ">
               <Link
                 className="hover:text-slate-200"
-                href={"/certificateExport/" + certName}
+                href={"/certificateExport/" + certName.Key}
                 target="_blank"
               >
-                {certName}
+                {certName.Key}
               </Link>
+{/* {JSON.stringify(certName)} */}
             </div>
           );
         })}
